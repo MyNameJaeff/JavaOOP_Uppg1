@@ -33,7 +33,7 @@ const updateCars = () => {
     console.log(cars);
 }
 
-// Base 10 Cars
+// Base 10 Cars 
 let car1 = new Car("Brand 1", "Image 1", "Price 1", "Model 1", "Year 1");
 let car2 = new Car("Brand 2", "Image 2", "Price 2", "Model 2", "Year 2");
 let car3 = new Car("Brand 3", "Image 3", "Price 3", "Model 3", "Year 3");
@@ -46,3 +46,13 @@ let car9 = new Car("Brand 9", "Image 9", "Price 9", "Model 9", "Year 9");
 let car10 = new Car("Brand 10", "Image 10", "Price 10", "Model 10", "Year 10");
 cars.push(car1, car2, car3, car4, car5, car6, car7, car8, car9, car10);
 updateCars();
+
+fetch("https://dummyjson.com/products")
+.then(res => res.json())
+.then(data => 
+    data.products.forEach(element => {
+        console.log(element);
+        $("#list2").append(`<li>Title: ${element.title}, <br>Description: ${element.description}, <br>Price: ${element.price} <br><img src="${element.thumbnail}"></li>`);
+    })
+);
+
